@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import Headers from './components/Header/Headers';
+import GlobalStyles from '@mui/material/GlobalStyles';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    background: {
+      default: 'lightYellow',
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles
+        styles={{
+          body: { background: 'linear-gradient(to right, #a79c86, #5fff85) ' },
+        }}
+      />
+      <div className="App">
+        <Headers />
+      </div>
+    </ThemeProvider>
   );
 }
 
 export default App;
+// background : linear-gradient(90deg, )
