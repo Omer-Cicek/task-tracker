@@ -2,6 +2,7 @@ import './App.css';
 import Headers from './components/Header/Headers';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { useState } from 'react';
 
 const theme = createTheme({
   palette: {
@@ -12,6 +13,10 @@ const theme = createTheme({
 });
 
 function App() {
+  const [taskList, setTaskList] = useState([]);
+  const listHandler = (task) => {
+    setTaskList([task, ...taskList]);
+  };
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles
@@ -20,11 +25,11 @@ function App() {
         }}
       />
       <div className="App">
-        <Headers />
+        <Headers setTaskList={listHandler} />
+        {console.log(taskList)}
       </div>
     </ThemeProvider>
   );
 }
 
 export default App;
-// background : linear-gradient(90deg, )

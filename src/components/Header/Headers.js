@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import AddTask from '../AddTask/AddTask';
 
-const Headers = () => {
+const Headers = ({ setTaskList }) => {
   const [showBar, setShowBar] = useState(false);
   return (
     <div>
@@ -12,9 +12,9 @@ const Headers = () => {
         color="success"
         onClick={() => setShowBar(!showBar)}
       >
-        Show Add Task Bar
+        {!showBar ? 'Show Add Task Bar ' : 'Close Add Task Bar '}
       </Button>
-      {showBar && <AddTask />}
+      {showBar && <AddTask setTaskList={setTaskList} />}
     </div>
   );
 };
