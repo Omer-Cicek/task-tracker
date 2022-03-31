@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { v4 as uuidv4 } from 'uuid';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddTask = ({ setTaskList }) => {
   const [inputTask, setInputTask] = useState({
@@ -12,8 +14,20 @@ const AddTask = ({ setTaskList }) => {
     lineOver: false,
   });
 
+  const handleSubmit = () => {
+    if (inputTask.task === '') {
+      toast.error('Please enter a task!');
+    } else if (inputTask.task.length < 3) {
+      toast.error('Task must be  at least 3 characters long!');
+    } else {
+      setTaskList(inputTask);
+      toast.success('Task added!');
+    }
+  };
+
   return (
     <>
+      <ToastContainer />
       <Box
         sx={{
           display: 'flex',
@@ -44,9 +58,6 @@ const AddTask = ({ setTaskList }) => {
             setInputTask({ ...inputTask, dayTime: e.target.value })
           }
           sx={{ width: 400 }}
-          // InputLabelProps={{
-          //   shrink: true,
-          // }}
         />
       </Box>
 
@@ -55,7 +66,7 @@ const AddTask = ({ setTaskList }) => {
         size="large"
         color="secondary"
         onClick={() => {
-          setTaskList(inputTask);
+          handleSubmit();
           setInputTask({
             task: '',
             dayTime: '2018-12-14T20:30',
