@@ -3,6 +3,7 @@ import Headers from './components/Header/Headers';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useState } from 'react';
+import Task from './components/Tasks/Task';
 
 const theme = createTheme({
   palette: {
@@ -17,6 +18,13 @@ function App() {
   const listHandler = (task) => {
     setTaskList([task, ...taskList]);
   };
+  const deleteHandler = (id) => {
+    setTaskList(taskList.filter((item) => item.id !== id));
+  };
+  const overLineHandler = (id) => {
+    setTaskList(...taskList, taskList.liveOver ? false : true);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles
@@ -26,7 +34,12 @@ function App() {
       />
       <div className="App">
         <Headers setTaskList={listHandler} />
-        {console.log(taskList)}
+
+        <Task
+          taskList={taskList}
+          deleteHandler={deleteHandler}
+          overLineHandler={overLineHandler}
+        />
       </div>
     </ThemeProvider>
   );

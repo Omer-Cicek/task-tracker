@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { v4 as uuidv4 } from 'uuid';
 
 const AddTask = ({ setTaskList }) => {
   const [inputTask, setInputTask] = useState({
     task: '',
-    dayTime: '',
+    dayTime: '2018-12-14T20:30',
+    id: uuidv4(),
+    lineOver: false,
   });
 
   return (
@@ -29,19 +32,21 @@ const AddTask = ({ setTaskList }) => {
           label="Task"
           onChange={(e) => setInputTask({ ...inputTask, task: e.target.value })}
           value={inputTask.task}
+          required
         />
+        {/* textfield that get time and date from user */}
         <TextField
           id="datetime-local"
           label="Day & Time"
           type="datetime-local"
-          defaultValue="2017-05-24T10:30"
+          value={inputTask.dayTime}
           onChange={(e) =>
             setInputTask({ ...inputTask, dayTime: e.target.value })
           }
           sx={{ width: 400 }}
-          InputLabelProps={{
-            shrink: true,
-          }}
+          // InputLabelProps={{
+          //   shrink: true,
+          // }}
         />
       </Box>
 
@@ -50,8 +55,15 @@ const AddTask = ({ setTaskList }) => {
         size="large"
         color="secondary"
         onClick={() => {
-          setTaskList(inputTask);
-          setInputTask('');
+          {
+            inputTask.task !== '' ? setTaskList(inputTask) : null;
+          }
+          setInputTask({
+            task: '',
+            dayTime: '2018-12-14T20:30',
+            id: uuidv4(),
+            lineOver: false,
+          });
         }}
         sx={{ width: '400px', mt: '20px', background: '#711A75' }}
       >
