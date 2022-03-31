@@ -9,7 +9,7 @@ const taskCssProperties = {
   justifyContent: 'center',
 };
 
-const Task = ({ taskList, deleteHandler, overLineHandler }) => {
+const Task = ({ taskList, deleteHandler }) => {
   return (
     <div>
       <Box sx={taskCssProperties}>
@@ -18,7 +18,6 @@ const Task = ({ taskList, deleteHandler, overLineHandler }) => {
             item={item}
             key={item.id}
             deleteHandler={deleteHandler}
-            overLineHandler={overLineHandler}
           />
         ))}
       </Box>

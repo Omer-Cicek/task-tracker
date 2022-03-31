@@ -17,16 +17,22 @@ const taskDisplayCssProps = {
   borderRadius: 2,
 };
 
-const TaskDisplay = ({ item, deleteHandler, overLineHandler }) => {
+const TaskDisplay = ({ item, deleteHandler }) => {
   return (
-    <div onDoubleClick={() => overLineHandler(item.id)}>
+    <div>
       <Box component="span" sx={taskDisplayCssProps}>
         {/* displaying tasks */}
         <p>{item.task}</p>
         {/* dixplaying close button  */}
         <CloseIcon
           onClick={() => deleteHandler(item.id)}
-          style={{ position: 'absolute', top: 10, right: 10, zIndex: 100 }}
+          style={{
+            position: 'absolute',
+            top: 10,
+            right: 10,
+            zIndex: 100,
+            cursor: 'pointer',
+          }}
         />
         {/* displaying daytime */}
         <p>

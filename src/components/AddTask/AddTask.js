@@ -55,9 +55,7 @@ const AddTask = ({ setTaskList }) => {
         size="large"
         color="secondary"
         onClick={() => {
-          {
-            inputTask.task !== '' ? setTaskList(inputTask) : null;
-          }
+          setTaskList(inputTask);
           setInputTask({
             task: '',
             dayTime: '2018-12-14T20:30',

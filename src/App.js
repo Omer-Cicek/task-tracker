@@ -21,9 +21,6 @@ function App() {
   const deleteHandler = (id) => {
     setTaskList(taskList.filter((item) => item.id !== id));
   };
-  const overLineHandler = (id) => {
-    setTaskList(...taskList, taskList.liveOver ? false : true);
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -35,11 +32,7 @@ function App() {
       <div className="App">
         <Headers setTaskList={listHandler} />
 
-        <Task
-          taskList={taskList}
-          deleteHandler={deleteHandler}
-          overLineHandler={overLineHandler}
-        />
+        <Task taskList={taskList} deleteHandler={deleteHandler} />
       </div>
     </ThemeProvider>
   );
