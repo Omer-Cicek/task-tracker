@@ -1,9 +1,9 @@
 
 ## Welcome! 👋
 
-Thanks to visit my Github! This project is created with React pure CSS and toastify. Here is the link for this project (https://omer-cicek.github.io/task-tracker/)
+Thanks to visit my Github! This project is created with React pure CSS, toastify and Material Icons . Here is the link for this project (https://omer-cicek.github.io/task-tracker/)
 
-**To do this project, i used basic React, CSS and Toastify.**
+**To do this project, i used basic React, CSS, Toastify and Material Icons.**
 
 # Task Tracker
 
